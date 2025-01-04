@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Event List{% endblock %}
+
+{% block content %}
+<h1>Upcoming Events</h1>
+<div class="events-grid">
+    {% for event in events %}
+        <div class="event-card">
+            <img src="{{ event.image.url }}" alt="{{ event.title }}">
+            <h2>{{ event.title }}</h2>
+            <p>{{ event.description|truncatewords:20 }}</p>
+            <a href="{% url 'event_detail' event.pk %}">View Details</a>
+        </div>
+    {% empty %}
+        <p>No events found.</p>
+    {% endfor %}
+</div>
+{% endblock %}
+

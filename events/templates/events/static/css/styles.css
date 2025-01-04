@@ -1,0 +1,40 @@
+/* Event grid layout */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px;
+}
+
+/* Individual event card */
+.event-card {
+    display: flex; /* Use flexbox to ensure equal height for all cards */
+    flex-direction: column; /* Stack elements vertically */
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    height: 100%; /* Make sure the card stretches to fill the space */
+    box-sizing: border-box; /* Include padding and borders in height calculations */
+}
+
+/* Event card image */
+.event-card img {
+    height: 200px; /* Set a fixed height for images */
+    object-fit: cover; /* Ensure the image maintains aspect ratio and does not stretch */
+    border-radius: 8px;
+    margin-bottom: 15px; /* Space between image and text */
+}
+
+/* Event description and footer content */
+.event-card .event-description {
+    flex-grow: 1; /* Allow description to take up remaining space */
+}
+
+/* Event detail page image */
+.event-detail img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+
