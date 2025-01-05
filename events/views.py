@@ -15,7 +15,7 @@ def event_list(request):
     paginator = Paginator(events, 9)  # Show 9 events per page
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'events/event_list.html', {'page_obj': page_obj})
+    return render(request, 'events/event_list.html', {'events': events})
 
 
 # Event detail view: Display details for a specific event
