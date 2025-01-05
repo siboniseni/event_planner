@@ -13,18 +13,22 @@
             <p><strong>Location:</strong> {{ event.location }}</p>
             <p class="mt-4"><strong>Description:</strong></p>
             <p>{{ event.description }}</p>
-            <p><strong>Ticket Price:</strong> ${{ event.ticket_price }}</p>
+            <p><strong>Ticket Price:</strong> ZAR {{ event.ticket_price }}</p>
 
             <h3>Comments</h3>
-            {% for comment in event.comments.all %}
-                <p><strong>{{ comment.name }}:</strong> {{ comment.text }}</p>
-                <p><em>{{ comment.created_at|date:"F j, Y, H:i" }}</em></p>
-            {% empty %}
-                <p>No comments yet.</p>
-            {% endfor %}
+            <div class="comment-section">
+                {% for comment in event.comments.all %}
+                    <p><strong>{{ comment.name }}:</strong> {{ comment.text }}</p>
+                    <p><em>{{ comment.created_at|date:"F j, Y, H:i" }}</em></p>
+                {% empty %}
+                    <p>No comments yet.</p>
+                {% endfor %}
+            </div>
 
             <!-- Button to show the comment form -->
-            <button id="comment-button" class="btn btn-secondary mt-3">Comment</button>
+            <div class="comment-button-container">
+                <button id="comment-button" class="btn btn-secondary mt-3">Comment</button>
+            </div>
 
             <!-- Hidden comment form -->
             <div id="comment-form" style="display:none;">
@@ -36,7 +40,8 @@
                 </form>
             </div>
 
-            <div class="social-share mt-3">
+            <!-- Social media buttons with flexbox layout -->
+            <div class="social-share">
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="btn btn-primary">Share on Facebook</a>
                 <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}" class="btn btn-info">Share on Twitter</a>
             </div>
@@ -57,5 +62,6 @@
     });
 </script>
 {% endblock %}
+
 
 
