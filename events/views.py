@@ -1,20 +1,16 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Event
-from django.core.paginator import Paginator
 
 
-# Home view: Display the latest 3 events
+# Home view: Display the latest 3 events, sorted by date
 def home(request):
-    events = Event.objects.all()[:3]  # Fetch the latest 3 events
+    events = Event.objects.all().order_by('date')[:3]  # Sort by date first, then limit to 3
     return render(request, 'events/homepage.html', {'events': events})
 
 
-# Event list view: Display all events
+# Event list view: Display all events sorted by date in ascending order
 def event_list(request):
-    events = Event.objects.all()
-    paginator = Paginator(events, 9)  # Show 9 events per page
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    events = Event.objects.all().order_by('date')
     return render(request, 'events/event_list.html', {'events': events})
 
 
