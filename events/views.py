@@ -27,7 +27,7 @@ def event_detail(request, pk):
         # Save the new comment
         Comment.objects.create(event=event, name=name, text=text)
 
-        return redirect('event_detail', pk=event.pk)  # Redirect to the same event page to show the new comment
+        return redirect('events:event_detail', pk=event.pk)  # Redirect to the same event page to show the new comment
     
     return render(request, 'events/event_detail.html', {'event': event})
 
@@ -40,7 +40,7 @@ def post_event(request):
             event = form.save(commit=False)
             event.organizer = request.user  # Set the logged-in user as the organizer
             event.save()
-            return redirect("event_list")  # Redirect to the event list
+            return redirect("events:event_list")  # Redirect to the event list
     else:
         form = EventForm()
     return render(request, "events/post_event.html", {"form": form})

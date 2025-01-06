@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container my-5">
-    <a href="{% url 'event_list' %}" class="btn btn-outline-secondary mb-3">← Back to Events</a>
+    <a href="{% url 'events:event_list' %}" class="btn btn-outline-secondary mb-3">← Back to Events</a>
     <div class="row">
         <div class="col-md-6">
             <img src="{{ event.image.url }}" alt="{{ event.title }}" class="img-fluid rounded">

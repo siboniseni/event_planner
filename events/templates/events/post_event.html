@@ -3,15 +3,27 @@
 {% block content %}
 <div class="container mt-5">
     <h2 class="text-center mb-4">Post a New Event</h2>
-    <form method="post" enctype="multipart/form-data" class="bg-light p-4 rounded shadow-sm" style="max-width: 600px; margin: 0 auto;">
+    <form method="post" enctype="multipart/form-data" class="bg-light p-5 rounded shadow" style="max-width: 600px; margin: 0 auto;">
         {% csrf_token %}
+        
+        <!-- Render form fields explicitly -->
+        {% for field in form %}
         <div class="mb-3">
-            {{ form.as_p }}
+            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+            <div class="text-danger small mt-1">{{ field.errors }}</div>
+            {% endif %}
         </div>
-        <button type="submit" class="btn btn-primary w-100">Submit</button>
+        {% endfor %}
+        
+        <button type="submit" class="btn btn-primary w-100">Submit Event</button>
     </form>
 </div>
 {% endblock %}
+
+
+
 
 
 

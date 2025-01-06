@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.urls import reverse
 from .forms import UserRegistrationForm
@@ -35,6 +35,11 @@ def register(request):
     else:
         form = UserRegistrationForm()
     return render(request, 'registration/signup.html', {'form': form})  # Render signup page
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('events:home')  # Redirect to home after logout
 
 
 
