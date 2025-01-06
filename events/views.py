@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import Event, Comment
+from django.contrib.auth.decorators import login_required
 
 
 # Home view: Display the latest 3 events, sorted by date
@@ -15,6 +16,7 @@ def event_list(request):
 
 
 # Event detail view: Display details for a specific event
+@login_required
 def event_detail(request, pk):
     event = get_object_or_404(Event, pk=pk)  # Fetch the event by primary key
 
