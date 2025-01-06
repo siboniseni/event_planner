@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import Event, Comment
 from django.contrib.auth.decorators import login_required
+from .forms import EventForm
 
 
 # Home view: Display the latest 3 events, sorted by date
@@ -16,7 +17,6 @@ def event_list(request):
 
 
 # Event detail view: Display details for a specific event
-@login_required
 def event_detail(request, pk):
     event = get_object_or_404(Event, pk=pk)  # Fetch the event by primary key
 
@@ -30,3 +30,17 @@ def event_detail(request, pk):
         return redirect('event_detail', pk=event.pk)  # Redirect to the same event page to show the new comment
     
     return render(request, 'events/event_detail.html', {'event': event})
+
+
+@login_required
+def post_event(request):
+    if request.method == "POST":
+        form = EventForm(request.POST, request.FILES)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.organizer = request.user  # Set the logged-in user as the organizer
+            event.save()
+            return redirect("event_list")  # Redirect to the event list
+    else:
+        form = EventForm()
+    return render(request, "events/post_event.html", {"form": form})
