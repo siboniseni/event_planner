@@ -33,7 +33,7 @@ SECRET_KEY = 'django-insecure-mms2&o-@=-(xf&uue#hrvtwz#y-75g)!ghad@-vjldpa_6=wje
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['eventplanner.com', 'www.eventplanner.com', '127.0.0.1']
 
 # Application definition
 INSTALLED_APPS = [
