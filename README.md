@@ -35,6 +35,7 @@ A web-based Event Planner app that allows users to browse, comment, share, buy t
 
 ### Steps to Run Locally:
 
-1. **Clone the repository:**
+1. **Live Demo:**
    ```bash
-   git clone https://github.com/yourusername/event-planner.git
+   https://event-planner-2025-7b214c2805eb.herokuapp.com/
+
