@@ -1,3 +1,20 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 /* Event grid layout */
 .events-grid {
     display: grid;
@@ -81,6 +98,11 @@
 /* Add spacing between comments and buttons */
 .comment-button-container {
     margin-bottom: 20px;
+}
+
+footer {
+    background-color:rgb(13, 13, 14);
+    color: white;
 }
 
 

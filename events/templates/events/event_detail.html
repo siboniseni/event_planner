@@ -4,9 +4,12 @@
 <div class="container my-5">
     <a href="{% url 'events:event_list' %}" class="btn btn-outline-secondary mb-3">← Back to Events</a>
     <div class="row">
+        <!-- Event Image Section -->
         <div class="col-md-6">
-            <img src="{{ event.image.url }}" alt="{{ event.title }}" class="img-fluid rounded">
+            <img src="{{ event.image.url }}" alt="{{ event.title }}" class="img-fluid rounded shadow-sm">
         </div>
+
+        <!-- Event Details Section -->
         <div class="col-md-6">
             <h1 class="mb-3">{{ event.title }}</h1>
             <p><strong>Date:</strong> {{ event.date|date:"F j, Y" }}</p>
@@ -15,35 +18,41 @@
             <p>{{ event.description }}</p>
             <p><strong>Ticket Price:</strong> ZAR {{ event.ticket_price }}</p>
 
+            <!-- Comments Section -->
             <h3>Comments</h3>
-            <div class="comment-section">
+            <div class="comment-section mb-4">
                 {% for comment in event.comments.all %}
-                    <p><strong>{{ comment.name }}:</strong> {{ comment.text }}</p>
-                    <p><em>{{ comment.created_at|date:"F j, Y, H:i" }}</em></p>
+                    <div class="comment-box mb-3">
+                        <p><strong>{{ comment.name }}:</strong> {{ comment.text }}</p>
+                        <p><em>{{ comment.created_at|date:"F j, Y, H:i" }}</em></p>
+                    </div>
                 {% empty %}
                     <p>No comments yet.</p>
                 {% endfor %}
             </div>
 
-            <!-- Button to show the comment form -->
-            <div class="comment-button-container">
-                <button id="comment-button" class="btn btn-secondary mt-3">Comment</button>
+            <!-- Comment Button and Form -->
+            <div class="comment-button-container mb-3">
+                <button id="comment-button" class="btn btn-secondary mt-3">Leave a Comment</button>
             </div>
 
-            <!-- Hidden comment form -->
             <div id="comment-form" style="display:none;">
-                <form method="POST">
+                <form method="POST" class="border p-3 rounded">
                     {% csrf_token %}
-                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                    <textarea name="text" class="form-control" placeholder="Leave a comment..." required></textarea>
-                    <button type="submit" class="btn btn-primary mt-2">Submit Comment</button>
+                    <input type="text" name="name" class="form-control mb-2" placeholder="Your Name" required>
+                    <textarea name="text" class="form-control mb-2" placeholder="Leave a comment..." required></textarea>
+                    <button type="submit" class="btn btn-primary">Submit Comment</button>
                 </form>
             </div>
 
-            <!-- Social media buttons with flexbox layout -->
-            <div class="social-share">
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="btn btn-primary">Share on Facebook</a>
-                <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}" class="btn btn-info">Share on Twitter</a>
+            <!-- Social Media Share Buttons -->
+            <div class="social-share mt-4">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="btn btn-primary me-2">
+                    <i class="bi bi-facebook"></i> Share on Facebook
+                </a>
+                <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}" class="btn btn-info">
+                    <i class="bi bi-twitter"></i> Share on Twitter
+                </a>
             </div>
         </div>
     </div>
@@ -53,7 +62,6 @@
 <script>
     document.getElementById("comment-button").addEventListener("click", function() {
         var form = document.getElementById("comment-form");
-        // Toggle the display property
         if (form.style.display === "none" || form.style.display === "") {
             form.style.display = "block";
         } else {

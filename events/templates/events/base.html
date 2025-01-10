@@ -6,13 +6,19 @@
     <title>{% block title %}Event Planner{% endblock %}</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
     <!-- Load static files -->
     {% load static %}
     <link rel="stylesheet" href="{% static 'static/css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 </head>
-<body>
+<body class="bg-light text-center py-5" style="background: linear-gradient(to bottom, rgba(112, 207, 148, 0.5), rgba(136, 152, 224, 0.2)), url('{% static 'images/home_background.jpg' %}'); background-size: cover; background-position: center;">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="{% url 'events:home' %}">Event Planner</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -22,7 +28,16 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="{% url 'events:home' %}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'events:post_event' %}">Post Event</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'events:event_list' %}">Events</a></li>                    
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Events</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'events:event_list' %}">All Events</a></li>
+                            <li><a class="dropdown-item" href="#">Upcoming Events</a></li>
+                            <li><a class="dropdown-item" href="#">Past Events</a></li>
+                        </ul>
+                    </li>
+                                        
                     <!-- <li class="nav-item"><a class="nav-link" href="#">Contact</a></li> -->
                     
                     {% if user.is_authenticated %}
@@ -49,8 +64,24 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-light text-center py-3">
-        <p>&copy; 2024 Event Planner. All rights reserved.</p>
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-2">&copy; 2024 Event Planner. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#" class="text-white me-3" aria-label="Facebook">
+                    <i class="bi bi-facebook fs-3"></i>
+                </a>
+                <a href="#" class="text-white me-3" aria-label="Twitter">
+                    <i class="bi bi-twitter fs-3"></i>
+                </a>
+                <a href="#" class="text-white me-3" aria-label="Instagram">
+                    <i class="bi bi-instagram fs-3"></i>
+                </a>
+                <a href="#" class="text-white me-3" aria-label="LinkedIn">
+                    <i class="bi bi-linkedin fs-3"></i>
+                </a>
+            </div>
+        </div>
     </footer>
 
     <!-- Bootstrap JS -->

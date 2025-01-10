@@ -3,6 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+
 <!-- Hero Section -->
 <div class="bg-light text-center py-5">
     <div class="container">
@@ -12,12 +13,13 @@
     </div>
 </div>
 
+<!-- Upcoming Events Section -->
 <div class="container my-5">
-    <h1 class="text-center">Upcoming Events</h1>
+    <h1 class="text-center animate__animated animate__fadeIn">Upcoming Events</h1>
     <div class="row">
         {% for event in events %}
         <div class="col-sm-6 col-md-4 col-lg-4 mb-4">
-            <div class="card">
+            <div class="card animate__animated animate__fadeInUp animate__delay-1s">
                 <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ event.title }}</h5>
