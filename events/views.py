@@ -2,11 +2,13 @@ from django.shortcuts import redirect, render, get_object_or_404
 from .models import Event, Comment
 from django.contrib.auth.decorators import login_required
 from .forms import EventForm
+from django.utils.timezone import now
 
 
 # Home view: Display the latest 3 events, sorted by date
 def home(request):
-    events = Event.objects.all().order_by('date')[:3]  # Sort by date first, then limit to 3
+    # Get upcoming events, sorted by date, and limit to 3
+    events = Event.objects.filter(date__gte=now().date()).order_by('date')[:3]
     return render(request, 'events/homepage.html', {'events': events})
 
 
