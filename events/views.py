@@ -46,3 +46,9 @@ def post_event(request):
     else:
         form = EventForm()
     return render(request, "events/post_event.html", {"form": form})
+
+
+def past_events(request):
+    # Filter events where the date is in the past
+    events = Event.objects.filter(date__lt=now().date()).order_by('-date')  # Sort by most recent past date
+    return render(request, 'events/past_events.html', {'events': events})

@@ -1,0 +1,30 @@
+{% extends "events/base.html" %}
+
+{% block title %}Past Events{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center">Past Events</h1>
+    {% if events %}
+        <div class="row">
+            {% for event in events %}
+            <div class="col-sm-6 col-md-4 col-lg-4 mb-4">
+                <div class="card">
+                    <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ event.title }}</h5>
+                        <p class="card-text">{{ event.description|truncatewords:20 }}</p>
+                        <p class="text-muted">
+                            <strong>Date:</strong> {{ event.date|date:"F j, Y" }}
+                        </p>
+                        <a href="{% url 'events:event_detail' event.id %}" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center">No past events found.</p>
+    {% endif %}
+</div>
+{% endblock %}
