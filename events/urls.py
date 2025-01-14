@@ -10,6 +10,7 @@ urlpatterns = [
     path('events/', views.event_list, name='event_list'),  # Event list page
     path('event/<int:pk>/', views.event_detail, name='event_detail'),  # Event detail page
     path("post_event/", views.post_event, name="post_event"),
+    path('past-events/', views.past_events, name='past_events'),
 ]
 
 if settings.DEBUG:  # Only serve media files via Django in development
