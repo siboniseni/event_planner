@@ -19,6 +19,14 @@ A web-based Event Planner app that allows users to browse, comment, share, buy t
 - Event categories to help users find events based on their interests
 - More functionality and UI improvements
 
+## Table of Contents
+1. [Description](#description)
+2. [Table of Contents](#table-of-contents)
+3. [Installation](#installation)
+4. [Usage](#usage)
+   - [Screenshots](#screenshots)
+5. [Credits](#credits)
+
 ## Technologies Used
 - **Python**
 - **Django**
