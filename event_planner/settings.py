@@ -23,7 +23,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Additional directories to look for static files during development
 STATICFILES_DIRS = [
-    BASE_DIR / "templates/events/static",
+    BASE_DIR / "static",
 ]
 
 # Quick-start development settings - unsuitable for production

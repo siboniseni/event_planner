@@ -10,34 +10,23 @@
 
     <!-- Load static files -->
     {% load static %}
-    <link rel="stylesheet" href="{% static 'static/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'events/css/styles.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 </head>
-<body class="bg-light text-center py-5" style="background: linear-gradient(to bottom, rgba(112, 207, 148, 0.5), rgba(136, 152, 224, 0.2)), url('{% static 'images/home_background.jpg' %}'); background-size: cover; background-position: center;">
+<body class="bg-light text-center py-5" style="background: linear-gradient(to bottom, rgba(176, 199, 184, 0.5), rgba(5, 32, 24, 0.2)), url('{% static 'images/home_background.jpg' %}'); background-size: cover; background-position: center;">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'events:home' %}">Event Planner</a>
+            <a class="navbar-brand" href="{% url 'events:home' %}">Home</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'events:home' %}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'events:post_event' %}">Post Event</a></li>
-                    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Events</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{% url 'events:event_list' %}">All Events</a></li>
-                            <li><a class="dropdown-item" href="#">Upcoming Events</a></li>
-                            <li><a class="dropdown-item" href="{% url 'events:past_events' %}">Past Events</a></li>
-                        </ul>
-                    </li>
-                                        
+                                   
                     <!-- <li class="nav-item"><a class="nav-link" href="#">Contact</a></li> -->
                     
                     {% if user.is_authenticated %}

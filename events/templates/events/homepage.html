@@ -5,30 +5,47 @@
 {% block content %}
 
 <!-- Hero Section -->
-<div class="bg-light text-center py-5">
+<div class="bg-light text-center py-4">
     <div class="container">
-        <h1 class="display-4">Welcome to Event Planner</h1>
-        <p class="lead">Plan, organize, and enjoy your special moments with ease.</p>
-        <a href="{% url 'events:event_list' %}" class="btn btn-primary btn-lg">Explore Events</a>
+        <h1 class="display-5 fw-bold">Welcome to Event Planner</h1>
+        <p class="lead text-secondary">Plan, organize, and enjoy your special moments with ease.</p>
     </div>
 </div>
 
-<!-- Upcoming Events Section -->
-<div class="container my-5">
-    <div class="row">
-        {% for event in events %}
-        <div class="col-sm-6 col-md-4 col-lg-4 mb-4">
-            <div class="card animate__animated animate__fadeInUp animate__delay-1s">
-                <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ event.title }}</h5>
-                    <p class="card-text">{{ event.description|truncatewords:20 }}</p>
-                    <p class="text-muted"><strong>Date:</strong> {{ event.date|date:"F j, Y" }}</p>
-                    <a href="{% url 'events:event_detail' event.id %}" class="btn btn-primary">Learn More</a>
+<!-- Action Buttons Section -->
+<div class="container text-center my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="d-grid gap-2">
+                <!-- Explore Events Button -->
+                <a href="{% url 'events:event_list' %}" class="btn btn-primary btn-lg shadow-sm">
+                    <i class="bi bi-calendar-event"></i> Explore Events
+                </a>
+                <!-- Post Event Button -->
+                <a href="{% url 'events:post_event' %}" class="btn btn-success btn-lg shadow-sm">
+                    <i class="bi bi-plus-circle"></i> Post Event
+                </a>
+                <!-- Events Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary btn-lg shadow-sm dropdown-toggle" type="button" id="eventsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-list"></i> Events
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="eventsDropdown">
+                        <li><a class="dropdown-item" href="{% url 'events:event_list' %}">All Events</a></li>
+                        <li><a class="dropdown-item" href="#">Upcoming Events</a></li>
+                        <li><a class="dropdown-item" href="{% url 'events:past_events' %}">Past Events</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
 </div>
+
+<!-- Footer -->
+<footer class="mt-4 text-center">
+    <p class="text-muted">Need help? <a href="#" class="text-decoration-none">Contact us</a>.</p>
+</footer>
+
 {% endblock %}
+
+
