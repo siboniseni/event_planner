@@ -1,0 +1,86 @@
+/* Event grid layout */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px;
+}
+
+/* Individual event card */
+.event-card {
+    display: flex; /* Use flexbox to ensure equal height for all cards */
+    flex-direction: column; /* Stack elements vertically */
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    height: 100%; /* Make sure the card stretches to fill the space */
+    box-sizing: border-box; /* Include padding and borders in height calculations */
+}
+
+/* Event card image */
+.event-card img {
+    height: 200px; /* Set a fixed height for images */
+    object-fit: cover; /* Ensure the image maintains aspect ratio and does not stretch */
+    border-radius: 8px;
+    margin-bottom: 15px; /* Space between image and text */
+}
+
+/* Event description and footer content */
+.event-card .event-description {
+    flex-grow: 1; /* Allow description to take up remaining space */
+}
+
+/* Event detail page image */
+.event-detail img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* -----EVENT DETAILS PAGE------------- */
+
+/* Ensure comments section is always tall enough */
+.comment-section {
+    margin-top: 30px;
+    padding-bottom: 30px;
+}
+
+/* Container for the social share buttons */
+.social-share {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 10px; /* Space between buttons */
+}
+
+/* Styling for the buttons */
+.social-share a {
+    display: inline-block;
+    width: 48%; /* Keep buttons in a row with space in between */
+    text-align: center;
+    padding: 10px;
+}
+
+/* Add some space at the bottom of the form */
+#comment-form {
+    margin-top: 20px;
+}
+
+/* Ensure the comment form takes enough space */
+#comment-form input, #comment-form textarea {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Optional: Add some transition for smoother toggle effect */
+#comment-form {
+    transition: all 0.3s ease;
+}
+
+/* Add spacing between comments and buttons */
+.comment-button-container {
+    margin-bottom: 20px;
+}
+
+
