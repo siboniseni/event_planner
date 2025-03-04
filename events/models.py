@@ -1,6 +1,9 @@
 """Models for the events application.
 
 This module defines the database models for handling events and comments in a Django project.
+
+:module: events.models
+:author: Siboniseni Kasa
 """
 
 from django.db import models
@@ -13,19 +16,25 @@ class Event(models.Model):
     location, and an optional image. Events can also include highlights
     and ticket pricing information.
 
-    Attributes:
-        title (CharField): The title of the event, limited to 200 characters.
-        description (TextField): A detailed description of the event.
-        date (DateField): The date on which the event will occur.
-        time (TimeField): The time at which the event is scheduled.
-        location (CharField): The location where the event takes place.
-        image (ImageField): An optional image for the event, stored under 'uploads/events/'.
-        highlights (TextField): A comma-separated list of event highlights.
-        ticket_price (DecimalField): Optional field for event ticket pricing.
-        organizer (ForeignKey): A reference to the user who organizes the event.
-            Uses Django's AUTH_USER_MODEL.
+    :ivar title: The title of the event.
+    :ivar description: A detailed description of the event.
+    :ivar date: The date on which the event will occur.
+    :ivar time: The time at which the event is scheduled.
+    :ivar location: The location where the event takes place.
+    :ivar image: An optional image for the event, stored under 'uploads/events/'.
+    :ivar highlights: A comma-separated list of event highlights.
+    :ivar ticket_price: Optional field for event ticket pricing.
+    :ivar organizer: A reference to the user who organizes the event.
+    :type title: str
+    :type description: str
+    :type date: date
+    :type time: time
+    :type location: str
+    :type image: str
+    :type highlights: str
+    :type ticket_price: decimal
+    :type organizer: ForeignKey
     """
-
     title = models.CharField(max_length=200)
     description = models.TextField()
     date = models.DateField()
@@ -54,11 +63,14 @@ class Comment(models.Model):
     """
     Represents a comment on a specific event.
 
-    Attributes:
-        event (ForeignKey): The event this comment is associated with.
-        name (CharField): The name of the commenter.
-        text (TextField): The content of the comment.
-        created_at (DateTimeField): The datetime when the comment was created.
+    :ivar event: The event this comment is associated with.
+    :ivar name: The name of the commenter.
+    :ivar text: The content of the comment.
+    :ivar created_at: The datetime when the comment was created.
+    :type event: ForeignKey
+    :type name: str
+    :type text: str
+    :type created_at: datetime
     """
 
     event = models.ForeignKey(Event, related_name='comments', on_delete=models.CASCADE)

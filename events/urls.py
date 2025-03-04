@@ -8,7 +8,11 @@ This module defines the URL patterns for the events app, including:
 - Past events archive
 
 In development mode (`settings.DEBUG` is True), it also serves media files.
+
+:module: events.urls
+:author: Siboniseni Kasa
 """
+
 
 from django.urls import path
 from . import views

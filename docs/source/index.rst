@@ -12,9 +12,14 @@ Welcome to the **Event Planner** project documentation! This documentation will 
    :maxdepth: 2
    :caption: Contents:
 
+   modules
+   views
+   forms
+   urls
+   modules
    event_planner
    events
-   modules
+   
 
 event\_planner Package
 ======================

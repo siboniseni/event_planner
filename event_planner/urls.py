@@ -4,8 +4,10 @@ This module defines the URL patterns for the entire Django project,
 including the admin site, and includes the URL configurations
 from the events and user_auth applications.
 
+It also serves media files in development mode (`settings.DEBUG` is True).
+
 Reference:
-https://docs.djangoproject.com/en/5.1/topics/http/urls/
+    https://docs.djangoproject.com/en/5.1/topics/http/urls/
 
 Examples:
     Function views:
@@ -25,6 +27,9 @@ Examples:
             from django.urls import include, path
         2. Add a URL to urlpatterns:
             path('blog/', include('blog.urls'))
+
+:module: event_planner.urls
+:author: Siboniseni Kasa
 """
 from django.conf import settings
 from django.conf.urls.static import static
@@ -39,5 +44,6 @@ urlpatterns = [
 
 # In development, serve media files using Django
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 
